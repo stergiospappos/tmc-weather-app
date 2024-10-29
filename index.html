@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styleguide.css" />
+  </head>
+  <body>
+    <div class="main-wrapper container-full">
+      <aside class="side-menu">
+        <div class="logo">
+          <img src="/assets/weather-app-logo.svg" alt="" width="100px" />
+        </div>
+        <nav aria-label="Main Menu">
+          <ul class="menu-ul">
+            <li class="menu-item">
+              <a href="#dashboard" class="menu-link">
+                <span class="menu-icon" aria-hidden="true">
+                  <img
+                    src="/assets/layout-dashboard.svg"
+                    alt="Dashboard"
+                    width="24px"
+                  />
+                </span>
+                <span class="menu-text">Dashboard</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="#map" class="menu-link">
+                <span class="menu-icon" aria-hidden="true">
+                  <img src="/assets/map.svg" alt="Map" width="24px" />
+                </span>
+                <span class="menu-text">Map</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="#saved-location" class="menu-link">
+                <span class="menu-icon" aria-hidden="true">
+                  <img
+                    src="/assets/map-pin-check.svg"
+                    alt="Saved Location"
+                    width="24px"
+                  />
+                </span>
+                <span class="menu-text">Saved Location</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="#calendar" class="menu-link">
+                <span class="menu-icon" aria-hidden="true">
+                  <img src="/assets/calendar.svg" alt="Calendar" width="24px" />
+                </span>
+                <span class="menu-text">Calendar</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="#settings" class="menu-link">
+                <span class="menu-icon" aria-hidden="true">
+                  <img src="/assets/settings.svg" alt="Settings" width="24px" />
+                </span>
+                <span class="menu-text">Settings</span>
+              </a>
+            </li>
+            <li class="menu-item">
+              <a href="#logout" class="menu-link">
+                <span class="menu-icon" aria-hidden="true">
+                  <img src="/assets/log-out.svg" alt="Log Out" width="24px" />
+                </span>
+                <span class="menu-text">Log Out</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="main container">
+        <div class="header">
+          <div class="search">
+            <input
+              class="search-field"
+              type="text"
+              placeholder="Search Your Favorite City Here..."
+            />
+          </div>
+          <div class="account">
+            <div class="notifications">
+              <span class="menu-icon"
+                ><img src="/assets/bell-dot.svg" alt="" width="24px"
+              /></span>
+            </div>
+            <div class="profile-image">
+              <img
+                src="/assets/profile-image-placeholder.svg"
+                width="40px"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+        <div class="main-dashboard">
+          <div class="current-city-container container-full">
+            <div class="left-panel">
+              <div class="top">
+                <h3 class="city-title">
+                  <span class="location-icon" aria-hidden="true">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-map-pin"
+                    >
+                      <path
+                        d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
+                      />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg> </span
+                  >Dubai
+                </h3>
+                <p class="date-time">Today 12:22pm</p>
+              </div>
+              <div class="middle">
+                <h4 class="temperature">--°C</h4>
+                <p class="weather-forecast">Mostly Clear</p>
+              </div>
+              <div class="bottom">
+                <div class="wind">
+                  <span class="wind-icon" aria-hidden="true">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-wind"
+                    >
+                      <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2" />
+                      <path d="M9.6 4.6A2 2 0 1 1 11 8H2" />
+                      <path d="M12.6 19.4A2 2 0 1 0 14 16H2" />
+                    </svg>
+                  </span>
+                  <h5 class="wind-text">--km/h</h5>
+                </div>
+                <div class="humidity">
+                  <span class="humidity-icon" aria-hidden="true">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-droplet"
+                    >
+                      <path
+                        d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"
+                      />
+                    </svg>
+                  </span>
+                  <h5 class="humidity-text">--%</h5>
+                </div>
+                <div class="sunrise">
+                  <span class="sunrise-icon" aria-hidden="true">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-sunrise"
+                    >
+                      <path d="M12 2v8" />
+                      <path d="m4.93 10.93 1.41 1.41" />
+                      <path d="M2 18h2" />
+                      <path d="M20 18h2" />
+                      <path d="m19.07 10.93-1.41 1.41" />
+                      <path d="M22 22H2" />
+                      <path d="m8 6 4-4 4 4" />
+                      <path d="M16 18a4 4 0 0 0-8 0" />
+                    </svg>
+                  </span>
+                  <h5 class="sunrise-text">--:--</h5>
+                </div>
+                <div class="sunset">
+                  <span class="sunset-icon" aria-hidden="true">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide lucide-sunset"
+                    >
+                      <path d="M12 10V2" />
+                      <path d="m4.93 10.93 1.41 1.41" />
+                      <path d="M2 18h2" />
+                      <path d="M20 18h2" />
+                      <path d="m19.07 10.93-1.41 1.41" />
+                      <path d="M22 22H2" />
+                      <path d="m16 6-4 4-4-4" />
+                      <path d="M16 18a4 4 0 0 0-8 0" />
+                    </svg>
+                  </span>
+                  <h5 class="sunset-text">--:--</h5>
+                </div>
+              </div>
+            </div>
+            <div class="right-panel">
+              <div class="data-container"></div>
+            </div>
+          </div>
+          <div class="dashboard-stats">
+            <div class="stat-box wind-box">
+              <div class="dashboard-stats-image">
+                <img
+                  src="/assets/wind-direction.svg"
+                  alt="Wind direction icon"
+                />
+              </div>
+              <div class="dashboard-stats-texts">
+                <h4>Wind</h4>
+                <p>Today wind speed</p>
+                <p>--km/h</p>
+              </div>
+            </div>
+            <div class="stat-box rain-chance">
+              <div class="dashboard-stats-image">
+                <img src="/assets/rain.svg" alt="Rain icon" />
+              </div>
+              <div class="dashboard-stats-texts">
+                <h4>Rain Chance</h4>
+                <p>Today rain chance</p>
+                <p>--%</p>
+              </div>
+            </div>
+            <div class="stat-box pressure">
+              <div class="dashboard-stats-image">
+                <img src="/assets/pressure.svg" alt="Pressure icon" />
+              </div>
+              <div class="dashboard-stats-texts">
+                <h4>Pressure</h4>
+                <p>Today pressure</p>
+                <p>720 hpa</p>
+              </div>
+            </div>
+            <div class="stat-box uv-index">
+              <div class="dashboard-stats-image">
+                <img src="/assets/uv.svg" alt="UV Index icon" />
+              </div>
+              <div class="dashboard-stats-texts">
+                <h4>UV Index</h4>
+                <p>Today UV index</p>
+                <p>2</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <aside class="week-view">
+        <h4>This Week</h4>
+        <div class="mockup"></div>
+      </aside>
+
+      <script src="/js/script.js"></script>
+      <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+      <script src="js/lenis.js"></script>
+    </div>
+  </body>
+</html>

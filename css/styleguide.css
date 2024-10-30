@@ -655,10 +655,34 @@ nav {
 .right-panel {
   width: 50%;
   height: 100%;
-  background-image: url(/assets/mockup-data.svg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: 50%;
+  align-content: center;
+}
+
+.chart-container {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+  align-content: center;
+}
+
+.chart-container h3 {
+  color: var(--color-light);
+  font-size: 20px !important;
+  margin-bottom: auto;
+}
+
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#myChart {
+  margin-bottom: auto;
 }
 
 .top {

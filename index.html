@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/styleguide.css" />
   </head>
   <body>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <div class="main-wrapper container-full">
       <aside class="side-menu">
         <div class="logo">
@@ -260,7 +261,10 @@
               </div>
             </div>
             <div class="right-panel">
-              <div class="data-container"></div>
+              <div class="chart-container">
+                <h3 class="title">Temperature</h3>
+                <canvas id="myChart"></canvas>
+              </div>
             </div>
           </div>
           <div class="dashboard-stats">
@@ -316,6 +320,7 @@
       </aside>
 
       <script src="/js/script.js"></script>
+
       <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
       <script src="js/lenis.js"></script>
     </div>

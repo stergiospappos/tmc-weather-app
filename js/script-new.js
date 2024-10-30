@@ -5,7 +5,6 @@ let morningTempCelsius = null;
 let afternoonTempCelsius = null;
 let eveningTempCelsius = null;
 let nightTempCelsius = null;
-let myChart = null; // Declare chart variable globally
 const milliSecondConverter = 1000;
 
 // Error Toast Notification
@@ -50,6 +49,9 @@ async function fetchWeather(city) {
 
 // Show Weather Function with temperature segments
 function showWeather(weatherData) {
+  const tempCelsius = (weatherData.list[0].main.temp - 273.15).toFixed(0);
+  document.querySelector(".temperature").innerHTML = `${tempCelsius}°C`;
+
   let startIndex = weatherData.list.findIndex((entry) =>
     entry.dt_txt.endsWith("09:00:00")
   );
@@ -58,7 +60,6 @@ function showWeather(weatherData) {
     morningTempCelsius = (
       weatherData.list[startIndex].main.temp - 273.15
     ).toFixed(0);
-    afternoonTempCelsius = eveningTempCelsius = nightTempCelsius = null; // Reset previous values
     for (let i = startIndex + 1; i < weatherData.list.length; i++) {
       let entry = weatherData.list[i];
       if (entry.dt_txt.endsWith("15:00:00") && afternoonTempCelsius === null) {
@@ -74,62 +75,38 @@ function showWeather(weatherData) {
         break;
       }
     }
-
-    // Update main temperature data container
-    const tempCelsius = (weatherData.list[0].main.temp - 273.15).toFixed(0);
-    document.querySelector(".temperature").innerHTML = `${tempCelsius}°C`;
-
-    // Update wind speed data
-    const wind = weatherData.list[0].wind.speed.toFixed(0);
-    document.querySelector(".wind-text").innerHTML = `${wind}km/h`;
-    document.querySelector("#windtext2").innerHTML = `${wind}km/h`;
-
-    // Update humidity data
-    const humid = weatherData.list[0].main.humidity.toFixed(0);
-    document.querySelector(".humidity-text").innerHTML = `${humid}%`;
-    document.querySelector("#humidity").innerHTML = `${humid}%`;
-
-    // Update pressure data
-    const pressure = weatherData.list[0].main.pressure.toFixed(0);
-    document.querySelector("#pressure").innerHTML = `${pressure}hPa`;
-
-    // Update coordinates
-    const lat = weatherData.city.coord.lat.toFixed(2);
-    const lon = weatherData.city.coord.lon.toFixed(2);
-    document.querySelector(
-      "#coordinates"
-    ).innerHTML = `Latitude: ${lat} </br> Longitude: ${lon}`;
-
-    // Update sunrise and sunset data
-    const sunriseUnix = weatherData.city.sunrise;
-    const sunriseDate = new Date(sunriseUnix * milliSecondConverter);
-    document.querySelector(".sunrise-text").innerHTML =
-      sunriseDate.toLocaleTimeString("en-GB", {
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-    const sunsetUnix = weatherData.city.sunset;
-    const sunsetDate = new Date(sunsetUnix * milliSecondConverter);
-    document.querySelector(".sunset-text").innerHTML =
-      sunsetDate.toLocaleTimeString("en-GB", {
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-
-    // Call the chart function to initialize/update the chart with new data
-    initializeChart();
   }
+
+  // Additional weather information display
+  const wind = weatherData.list[0].wind.speed.toFixed(0);
+  document.querySelector(".wind-text").innerHTML = `${wind}km/h`;
+  document.querySelector("#windtext2").innerHTML = `${wind}km/h`;
+  const humid = weatherData.list[0].main.humidity.toFixed(0);
+  document.querySelector(".humidity-text").innerHTML = `${humid}%`;
+  document.querySelector("#humidity").innerHTML = `${humid}%`;
+  const pressure = weatherData.list[0].main.pressure.toFixed(0);
+  document.querySelector("#pressure").innerHTML = `${pressure}hPa`;
+
+  const sunriseUnix = weatherData.city.sunrise;
+  const sunriseDate = new Date(sunriseUnix * milliSecondConverter);
+  document.querySelector(".sunrise-text").innerHTML =
+    sunriseDate.toLocaleTimeString("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+  const sunsetUnix = weatherData.city.sunset;
+  const sunsetDate = new Date(sunsetUnix * milliSecondConverter);
+  document.querySelector(".sunset-text").innerHTML =
+    sunsetDate.toLocaleTimeString("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
+  initializeChart();
 }
 
-// Initialize or update the chart
-function initializeChart() {
-  const ctx = document.getElementById("myChart").getContext("2d");
-
-  // Check if the chart already exists, and if so, destroy it before creating a new one
-  if (myChart) {
-    myChart.destroy();
-  }
-
+// Initialize Chart with Weather Data
+async function initializeChart() {
   const minTemperature = Math.min(
     morningTempCelsius,
     afternoonTempCelsius,
@@ -143,10 +120,11 @@ function initializeChart() {
     nightTempCelsius
   );
 
-  myChart = new Chart(ctx, {
+  const ctx = document.getElementById("myChart").getContext("2d");
+  const myChart = new Chart(ctx, {
     type: "line",
     data: {
-      labels: [`Morning`, "Afternoon", "Evening", "Night"],
+      labels: ["Morning", "Afternoon", "Evening", "Night"],
       datasets: [
         {
           label: "Temperature",

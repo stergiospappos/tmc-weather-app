@@ -100,6 +100,36 @@
             </div>
           </div>
         </div>
+        <div class="toast">
+          <div id="overlay"></div>
+          <div class="wrapper">
+            <div id="toast">
+              <div class="container-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-circle-alert"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" x2="12" y1="8" y2="12" />
+                  <line x1="12" x2="12.01" y1="16" y2="16" />
+                </svg>
+              </div>
+              <div class="container-2">
+                <p>Error</p>
+                <p>City Not Found!</p>
+              </div>
+              <button id="close" onclick="closeToast()">&times;</button>
+            </div>
+          </div>
+        </div>
         <div class="main-dashboard">
           <div class="current-city-container container-full">
             <div class="left-panel">
@@ -122,8 +152,9 @@
                         d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
                       />
                       <circle cx="12" cy="10" r="3" />
-                    </svg> </span
-                  >Dubai
+                    </svg>
+                  </span>
+                  <div class="current-city-title">Dubai</div>
                 </h3>
                 <p class="date-time">Today 12:22pm</p>
               </div>
@@ -242,8 +273,8 @@
               </div>
               <div class="dashboard-stats-texts">
                 <h4>Wind</h4>
-                <p>Today wind speed</p>
-                <p>--km/h</p>
+                <p>Today Wind Speed</p>
+                <p id="windtext2">--km/h</p>
               </div>
             </div>
             <div class="stat-box rain-chance">
@@ -251,9 +282,9 @@
                 <img src="/assets/rain.svg" alt="Rain icon" />
               </div>
               <div class="dashboard-stats-texts">
-                <h4>Rain Chance</h4>
-                <p>Today rain chance</p>
-                <p>--%</p>
+                <h4>Humidity</h4>
+                <p>Today Humidity</p>
+                <p id="humidity">--%</p>
               </div>
             </div>
             <div class="stat-box pressure">
@@ -262,8 +293,8 @@
               </div>
               <div class="dashboard-stats-texts">
                 <h4>Pressure</h4>
-                <p>Today pressure</p>
-                <p>720 hpa</p>
+                <p>Today Pressure</p>
+                <p id="pressure">----hpa</p>
               </div>
             </div>
             <div class="stat-box uv-index">
@@ -271,9 +302,9 @@
                 <img src="/assets/uv.svg" alt="UV Index icon" />
               </div>
               <div class="dashboard-stats-texts">
-                <h4>UV Index</h4>
-                <p>Today UV index</p>
-                <p>2</p>
+                <h4>Location Coordinates</h4>
+                <p>Current City Coordinates</p>
+                <p id="coordinates">-</p>
               </div>
             </div>
           </div>
